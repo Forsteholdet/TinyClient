@@ -1,7 +1,7 @@
 # TinyCurl
-
-<img height="300px" width="300px" src="animated_logo.svg"/>
-
+<p align="center">
+  <img height="300px" width="300px" src="animated_logo.svg"/>
+</p>
 Curl implementation for microcontrollers
 
 
