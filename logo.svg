@@ -5,7 +5,7 @@
 
         <mask id="knockout-text">
             <rect width="100%" height="100%" fill="#fff" x="0" y="0"/>
-            <text stroke-opacity="0" fill="#115D8E" stroke="#000099" stroke-dashoffset="" fill-rule="nonzero" font-size="75" font-family="Fredoka One" letter-spacing="0" word-spacing="0" marker-start="" marker-mid="" marker-end="" id="svg_2" x="65.83814978599548" y="123.58959513902664" width="132" height="104" style="color: rgb(255, 255, 255);">tC</text>
+            <text stroke-opacity="0" fill="#00000" stroke="#FFFFFF" stroke-dashoffset="" fill-rule="nonzero" font-size="75" font-family="Fredoka One" letter-spacing="0" word-spacing="0" marker-start="" marker-mid="" marker-end="" id="svg_2" x="65.83814978599548" y="123.58959513902664" width="132" height="104" style="color: rgb(255, 255, 255);">tC</text>
         </mask>
     </g>
 </svg>
