@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" style=""><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/>  
+    <g class="currentLayer" style="">
+        <title>Layer 1</title>
+        <path mask="url(#knockout-text)" fill="#115D8E" d="M159.5,53.5 C170.9,66.9 169.8,91.3 163.7,113.1 C157.6,135 146.5,154.3 130.1,161.9 C113.7,169.6 92,165.6 75.8,155.7 C59.6,145.8 48.8,130 46.3,113.8 C43.8,97.6 49.6,81 59.9,67.8 C70.2,54.6 85.1,44.9 104.6,41.2 C124,37.6 148.1,40 159.5,53.5 z" id="svg_1"/>
+
+        <mask id="knockout-text">
+            <rect width="100%" height="100%" fill="#fff" x="0" y="0"/>
+            <text stroke-opacity="0" fill="#115D8E" stroke="#000099" stroke-dashoffset="" fill-rule="nonzero" font-size="75" font-family="Fredoka One" letter-spacing="0" word-spacing="0" marker-start="" marker-mid="" marker-end="" id="svg_2" x="65.83814978599548" y="123.58959513902664" width="132" height="104" style="color: rgb(255, 255, 255);">tC</text>
+        </mask>
+    </g>
+</svg>
