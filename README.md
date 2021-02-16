@@ -1,5 +1,5 @@
 # TinyCurl
 
-<img src="logo_trans.png"/>
+<img src="animated_logo.svg"/>
 
 Curl implementation for microcontrollers
