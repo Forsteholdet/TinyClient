@@ -1,2 +1,2 @@
 # TinyCurl
-Rework of the library Curl for microcontrollers
+Curl implementation for microcontrollers
