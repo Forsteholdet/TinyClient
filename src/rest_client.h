@@ -2,7 +2,6 @@
 #define TINYCLIENT_REST_CLIENT_H
 
 #include <string>
-#include "curl/curl.h"
 
 using namespace std;
 
@@ -26,12 +25,7 @@ public:
     }
 
     void call_api(string url){
-        CURL *curl;
-        curl = curl_easy_init();
-        curl_easy_setopt(curl, CURLOPT_URL, "https://randomuser.me/api/");
-        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &rest_client::writeCallback);
-
-        curl_easy_perform(curl);
+        // used to use curl
     }
 };
 

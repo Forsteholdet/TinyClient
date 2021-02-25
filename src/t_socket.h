@@ -1,6 +1,5 @@
 #ifndef TINY_CLIENT_T_SOCKET_H
 #define TINY_CLIENT_T_SOCKET_H
-
 #include <string>
 #include <cstdio>
 #include <sys/socket.h>
@@ -10,47 +9,65 @@
 #include <iostream>
 #include <vector>
 #include <netdb.h>
+#include <sstream>
 
 
 namespace tinyclient{
     class t_socket {
     public:
         virtual std::string send(std::string url){
-            int sock = 0, valread;
-            struct sockaddr_in serv_addr;
-            std::string hello = "GET http://randomuser.me/api/ HTTP/1.1\\r\\n\\r\\n";
-            char buffer[4096] = {0};
-            if ((sock = ::socket(AF_INET, SOCK_STREAM, 0)) < 0)
-            {
-                printf("\n Socket creation error \n");
-                std::exit(-1);
-            }
+            int sock;
+            struct sockaddr_in client;
 
-            serv_addr.sin_family = AF_INET;
-            serv_addr.sin_port = htons(443);
+            struct hostent * host = gethostbyname("127.0.0.1");
 
-            struct hostent *hp;
-            auto host = "randomuser.me";
-            if((hp = gethostbyname(host)) == NULL){
-                herror("gethostbyname");
+            if ( (host == NULL) || (host->h_addr == NULL) ) {
+                std::cout << "Error retrieving DNS information." << std::endl;
                 exit(1);
             }
-            bcopy(hp->h_addr, &serv_addr.sin_addr, hp->h_length);
 
+            bzero(&client, sizeof(client));
+            client.sin_family = AF_INET;
+            client.sin_port = htons( 5000 );
+            memcpy(&client.sin_addr, host->h_addr, host->h_length);
 
-            if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
-            {
-                printf("\nConnection Failed \n");
-                std::exit(-1);
+            sock = socket(AF_INET, SOCK_STREAM, 0);
+
+            if (sock < 0) {
+                std::cout << "Error creating socket." << std::endl;
+                exit(1);
             }
-            ::send(sock , &hello , hello.length() , 0 );
-            printf("Hello message sent\n");
-            valread = ::read( sock , buffer, 4096);
-            std::string response = buffer;
-            return response;
+
+            if ( connect(sock, (struct sockaddr *)&client, sizeof(client)) < 0 ) {
+                close(sock);
+                std::cout << "Could not connect" << std::endl;
+                exit(1);
+            }
+
+            std::stringstream ss;
+            ss << "GET / HTTP/1.1\r\n"
+               << "Host: 127.0.0.1\r\n"
+               << "Accept: application/json\r\n"
+               << "\r\n\r\n";
+            std::string request = ss.str();
+
+            if (::send(sock, request.c_str(), request.length(), 0) != (int)request.length()) {
+                std::cout << "Error sending request." << std::endl;
+                exit(1);
+            }
+
+            char cur;
+            while ( read(sock, &cur, 1) > 0 ) {
+                std::cout << cur;
+            }
+            std::cout << std::endl;
+
+            return "hej";
         };
         virtual void recv(){};
         virtual std::string response(){return "base response";};
+
+        std::string content;
     };
 
 }

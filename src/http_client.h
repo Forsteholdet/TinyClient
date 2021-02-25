@@ -11,7 +11,7 @@ class http_client {
 
 public:
     explicit http_client(tinyclient::t_socket* socket_p) {
-        socket = socket_p;
+        socket = socket_p; // use heap (new operator)
     }
 
     std::string get(string url){
@@ -23,7 +23,7 @@ public:
     };
 
 private:
-    tinyclient::t_socket *socket;
+    tinyclient::t_socket *socket; // new socket()
 };
 
 

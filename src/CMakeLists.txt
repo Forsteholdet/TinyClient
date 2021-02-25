@@ -30,8 +30,6 @@ FetchContent_MakeAvailable(bourne)
 target_link_libraries(${LIB_NAME} bourne)
 
 
-## curl
-find_package(CURL REQUIRED)
-target_link_libraries(${LIB_NAME} ${CURL_LIBRAIES})
+
 
 
