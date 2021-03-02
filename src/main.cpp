@@ -1,13 +1,13 @@
 #include <iostream>
 
 #include <sys/socket.h>
-#include "http_client.h"
+#include "http_request.h"
 
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
     tinyclient::t_socket socket;
-    http_client client(&socket);
+    http_request client(&socket);
 
     std::string response = socket.send("bla");
 

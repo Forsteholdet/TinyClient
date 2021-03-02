@@ -1,5 +1,5 @@
 # Variables
-set(SOURCES rest_client.cpp rest_client.h http_client.cpp http_client.h fake_socket.cpp fake_socket.h t_socket.cpp t_socket.h)
+set(SOURCES rest_client.cpp rest_client.h http_request.cpp http_request.h fake_socket.cpp fake_socket.h t_socket.cpp t_socket.h response/response.cpp response/response.h)
 set(LIB_NAME ${PROJECT_NAME}_lib)
 
 
