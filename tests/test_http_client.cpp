@@ -23,7 +23,7 @@ TEST_CASE("HTTP Request"){
         REQUIRE( content.substr(0, 3) == "GET");
     }
 
-    SECTION("Find addresse only have baseurl"){
+    SECTION("Find address only have baseurl"){
         std::string baseurl = "facebook.com";
 
         client.request(baseurl);
@@ -31,7 +31,7 @@ TEST_CASE("HTTP Request"){
         REQUIRE(client.host_address == baseurl);
     }
 
-    SECTION("Find host addresse with url and uri"){
+    SECTION("Find host address with url and uri"){
         std::string baseurl = "facebook.com";
 
         client.request(baseurl + "/users");
@@ -82,6 +82,3 @@ TEST_CASE("GET method"){
 
     delete socket;
 }
-
-
-
