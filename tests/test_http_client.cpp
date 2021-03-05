@@ -56,6 +56,17 @@ TEST_CASE("HTTP Request"){
         REQUIRE(client.uri == uri);
     }
 
+    SECTION("Make full GET request"){
+        auto full_request = "GET /users?page=lol HTTP/1.1\r\n"
+                            "Host: facebook.com\r\n";
+
+        client.get("facebook.com/users?page=lol");
+        std::string content = socket->content;
+
+        REQUIRE(content == full_request);
+    }
+
+
     delete socket;
 };
 

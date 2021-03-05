@@ -39,8 +39,6 @@ private:
     tinyclient::t_socket *socket; // new socket()
 
 
-
-
     string get_socket_string(){
         std::stringstream ss;
         ss << type << " " << uri << " HTTP/1.1\r\n"
@@ -53,6 +51,18 @@ private:
 
         return l_host_address;
     }
+
+    string find_uri(const string &url) {
+        std::string l_uri;
+        if (url.find('/') != string::npos)
+            l_uri = url.substr(url.find('/'), url.length() - 1);
+
+        return l_uri;
+    }
+
+
+
+
 };
 
 
