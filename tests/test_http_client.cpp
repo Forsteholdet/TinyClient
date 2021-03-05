@@ -39,6 +39,14 @@ TEST_CASE("HTTP Request"){
         REQUIRE(client.host_address == baseurl);
     }
 
+    SECTION("If no uri, make it empty"){
+        std::string baseurl = "facebook.com";
+
+        client.request(baseurl);
+
+        REQUIRE(client.uri.empty());
+    }
+
     SECTION("Find uri with url"){
         std::string baseurl = "facebook.com";
         auto uri = "/users";

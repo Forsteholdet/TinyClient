@@ -15,11 +15,13 @@ public:
     explicit http_request(tinyclient::t_socket* socket_p) {
         socket = socket_p; // use heap (new operator)
     }
-
+    string host_address;
+    string uri;
 
 
     response request(const string& url){
         host_address = find_host_address(url);
+        uri = find_uri(url);
 
         socket->send(get_socket_string());
         std::string response_str = socket->response();
@@ -32,9 +34,6 @@ public:
         return request(url);
     }
 
-
-    string host_address;
-    string uri;
 private:
     string type;
     tinyclient::t_socket *socket; // new socket()
@@ -44,17 +43,15 @@ private:
 
     string get_socket_string(){
         std::stringstream ss;
-        ss << type << uri << "HTTP/1.1\r\n"
-           << "Host: " << host_address << "\r\n"
-           << "Accept: application/json\r\n"
-           << "\r\n\r\n";
+        ss << type << " " << uri << " HTTP/1.1\r\n"
+           << "Host: " << host_address << "\r\n";
         return ss.str();
     }
 
     string find_host_address(const string &url) {
-        std::string host_address = url.substr(0, url.find('/'));
+        std::string l_host_address = url.substr(0, url.find('/'));
 
-        return host_address;
+        return l_host_address;
     }
 };
 
