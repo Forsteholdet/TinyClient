@@ -1,0 +1,5 @@
+GET /v2/pet/findByStatus?status=available HTTP/1.1
+Host: petstore.swagger.io
+User-Agent: curl/7.55.1
+accept: application/json
+authorization: Bearer cdce72e2-5353-4a71-aa63-11acc4e28edf
