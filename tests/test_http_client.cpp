@@ -1,11 +1,16 @@
 #include <response/response.h>
+#include <constants.h>
 #include "catch.hpp"
 #include "http_request.h"
 #include "fake_socket.h"
 
 #include "bourne/json.hpp"
 #include "string"
+using namespace Catch;
 
+
+// bugs
+//// make two request in a row;
 
 TEST_CASE("HTTP Request"){
     auto *socket = new fake_socket();
@@ -20,7 +25,7 @@ TEST_CASE("HTTP Request"){
         client.get("fake.lol");
         std::string content = socket->content;
 
-        REQUIRE( content.substr(0, 3) == "GET");
+        REQUIRE_THAT(content ,StartsWith("GET"));
     }
 
     SECTION("Find address only have baseurl"){
@@ -56,45 +61,40 @@ TEST_CASE("HTTP Request"){
         REQUIRE(client.uri == uri);
     }
 
-    SECTION("Make full GET request"){
-        auto full_request = "GET /users?page=lol HTTP/1.1\r\n"
-                            "Host: facebook.com\r\n";
+    SECTION("Make a request with uri and host"){
 
-        client.get("facebook.com/users?page=lol");
-        std::string content = socket->content;
+        client.get("tinyclient.com/users?page=lol");
 
-        REQUIRE(content == full_request);
+        auto full_request = client.type() + " /users?page=lol HTTP/1.1\r\n"
+                            "Host: tinyclient.com\r\n";
+
+        REQUIRE_THAT(socket->content, Equals(full_request));
+    }
+
+    SECTION("Reqeust standard accept is application/json"){
+
+        client.request("tinyclient.com");
+
+        REQUIRE_THAT(client.accept, Equals(constants::JSON));
     }
 
 
     delete socket;
 };
 
-TEST_CASE("GET method"){
+TEST_CASE("GET"){
     auto *socket = new fake_socket();
     tinyclient::http_request client(socket);
 
     SECTION("receives input"){
-        response rsp = client.get("fake.lol");
-
-        std::string GET = socket->content.substr(0,3);
+        response rsp = client.get("tinyclient.com");
 
         REQUIRE(GET == "GET");
     }
 
-    SECTION("options"){
-        std::string url = "fake.lol/costumers/1";
-        response rsp = client.get(url);
-        std::string content = socket->content;
-        std::string content_url = content.erase(0,4);
-
-        REQUIRE(content == content_url);
-    }
 
     SECTION("Get returns a response"){
-
-
-        std::string url = "fake.lol";
+        std::string url = "tinyclient.com";
 
         response response = client.get(url);
     }
