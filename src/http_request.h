@@ -47,6 +47,24 @@ public:
         return request(url);
     }
 
+    response post (const string& url, bourne::json body){
+        _type = "POST";
+        _body = body;
+        return request(url);
+    }
+
+    response post (const string& url){
+        _type = "POST";
+        return request(url);
+    }
+
+    response del (const string& url){
+        _type = "DELETE";
+        return request(url);
+    }
+
+
+
 private:
     string _type;
     bourne::json _body;

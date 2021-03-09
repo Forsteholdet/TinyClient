@@ -22,14 +22,14 @@ TEST_CASE("HTTP Request"){
 
     SECTION ("Request string have method"){
 
-        client.get("fake.lol");
+        client.get("tinyclient.com");
         std::string content = socket->content;
 
         REQUIRE_THAT(content ,StartsWith("GET"));
     }
 
     SECTION("Find address only have baseurl"){
-        std::string baseurl = "facebook.com";
+        std::string baseurl = "tinyclient.com";
 
         client.request(baseurl);
 
@@ -37,7 +37,7 @@ TEST_CASE("HTTP Request"){
     }
 
     SECTION("Find host address with url and uri"){
-        std::string baseurl = "facebook.com";
+        std::string baseurl = "tinyclient.com";
 
         client.request(baseurl + "/users");
 
@@ -45,7 +45,7 @@ TEST_CASE("HTTP Request"){
     }
 
     SECTION("If no uri, make it empty"){
-        std::string baseurl = "facebook.com";
+        std::string baseurl = "tinyclient.com";
 
         client.request(baseurl);
 
@@ -53,7 +53,7 @@ TEST_CASE("HTTP Request"){
     }
 
     SECTION("Find uri with url"){
-        std::string baseurl = "facebook.com";
+        std::string baseurl = "tinyclient.com";
         auto uri = "/users";
 
         client.request(baseurl + uri);
@@ -89,7 +89,7 @@ TEST_CASE("GET"){
     SECTION("receives input"){
         response rsp = client.get("tinyclient.com");
 
-        REQUIRE(GET == "GET");
+        REQUIRE_THAT(socket->content, StartsWith("GET"));
     }
 
 
@@ -97,6 +97,48 @@ TEST_CASE("GET"){
         std::string url = "tinyclient.com";
 
         response response = client.get(url);
+    }
+
+    delete socket;
+}
+
+TEST_CASE("POST"){
+    auto *socket = new fake_socket();
+    tinyclient::http_request client(socket);
+
+    SECTION("receives input"){
+        response rsp = client.post("tinyclient.com");
+        REQUIRE_THAT(socket->content, StartsWith("POST"));
+    }
+
+    SECTION("Accept body with post request"){
+
+        bourne::json body = {"Id","1"};
+
+        response rsp = client.post("tinyclient.com", body);
+
+        REQUIRE(client.body() == body);
+    }
+
+    SECTION("Socket receives body, in the end of request"){
+        bourne::json body = {"Id","1"};
+
+        response rsp = client.post("tinyclient.com", body);
+
+        REQUIRE_THAT(socket->content, EndsWith(body.dump()));
+    }
+
+    delete socket;
+}
+
+TEST_CASE("DELETE") {
+    auto *socket = new fake_socket();
+    tinyclient::http_request client(socket);
+
+    SECTION("Check type"){
+        response rsp = client.del("tinyclient.com");
+
+        REQUIRE_THAT(socket->content, StartsWith("DELETE"));
     }
 
     delete socket;
