@@ -47,14 +47,14 @@ public:
         return request(url);
     }
 
-    response post (const string& url, bourne::json body){
+    response post (const string& url){
         _type = "POST";
-        _body = body;
         return request(url);
     }
 
-    response post (const string& url){
+    response post (const string& url, bourne::json body){
         _type = "POST";
+        _body = body;
         return request(url);
     }
 
