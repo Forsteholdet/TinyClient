@@ -1,8 +1,8 @@
-# TinyCurl
+# TinyClient
 <p align="center">
   <img height="300px" width="300px" src="assets/animated_logo.svg"/>
 </p>
-Curl implementation for microcontrollers
+Http client implementation for microcontrollers
 
 
 

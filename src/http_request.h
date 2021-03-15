@@ -1,7 +1,6 @@
 #ifndef TINY_CLIENT_HTTP_CLIENT_H
 #define TINY_CLIENT_HTTP_CLIENT_H
 
-#include <string>
 #include "fake_socket.h"
 #include "bourne/json.hpp"
 #include "constants.h"
@@ -47,14 +46,14 @@ public:
         return request(url);
     }
 
-    response post (const string& url, bourne::json body){
+    response post (const string& url){
         _type = "POST";
-        _body = body;
         return request(url);
     }
 
-    response post (const string& url){
+    response post (const string& url, bourne::json body){
         _type = "POST";
+        _body = body;
         return request(url);
     }
 
