@@ -17,15 +17,15 @@ public:
         socket = socket_p;
         accept = constants::JSON;
     }
-    string host_address;
-    string uri;
-    string accept;
+    String host_address;
+    String uri;
+    String accept;
 
 
-    string type () const { return _type; };
+    String type () const { return _type; };
     bourne::json body () const { return _body; };
 
-    response request(const string& url){
+    response request(const String& url){
         host_address = find_host_address(url);
         uri = find_uri(url);
 
@@ -41,23 +41,23 @@ public:
         return response(ok, response_str);
     }
 
-    response get (const string& url){
+    response get (const String& url){
         _type = "GET";
         return request(url);
     }
 
-    response post (const string& url){
+    response post (const String& url){
         _type = "POST";
         return request(url);
     }
 
-    response post (const string& url, bourne::json body){
+    response post (const String& url, bourne::json body){
         _type = "POST";
         _body = body;
         return request(url);
     }
 
-    response del (const string& url){
+    response del (const String& url){
         _type = "DELETE";
         return request(url);
     }
@@ -65,25 +65,25 @@ public:
 
 
 private:
-    string _type;
+    String _type;
     bourne::json _body;
     tinyclient::t_socket *socket; // new socket()
 
 
-    string get_socket_string(){
+    String get_socket_string(){
         std::stringstream ss;
         ss << _type << " " << uri << " HTTP/1.1\r\n"
            << "Host: " << host_address << "\r\n";
         return ss.str();
     }
 
-    string find_host_address(const string &url) {
+    String find_host_address(const string &url) {
         std::string l_host_address = url.substr(0, url.find('/'));
 
         return l_host_address;
     }
 
-    string find_uri(const string &url) {
+    String find_uri(const String &url) {
         std::string l_uri;
         if (url.find('/') != string::npos)
             l_uri = url.substr(url.find('/'), url.length() - 1);
