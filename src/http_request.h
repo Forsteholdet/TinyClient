@@ -29,14 +29,14 @@ public:
         host_address = find_host_address(url);
         uri = find_uri(url);
 
-        std::string socket_string = get_socket_string();
+        String socket_string = get_socket_string();
 
         if (! body().is_null()){
             socket_string += body().dump();
         }
 
         socket->send(socket_string);
-        std::string response_str = socket->response();
+        String response_str = socket->response();
 
         return response(ok, response_str);
     }
@@ -71,22 +71,29 @@ private:
 
 
     String get_socket_string(){
-        std::stringstream ss;
-        ss << _type << " " << uri << " HTTP/1.1\r\n"
-           << "Host: " << host_address << "\r\n";
-        return ss.str();
+
+        // std::stringstream ss;
+        // ss << _type << " " << uri << " HTTP/1.1\r\n"
+        //    << "Host: " << host_address << "\r\n";
+        // return ss.str();
+
+        String ss =
+                _type + " " + uri + " HTTP/1.1\r\n" +
+                "Host: " + host_address + "\r\n";
+
+        return ss;
     }
 
-    String find_host_address(const string &url) {
-        std::string l_host_address = url.substr(0, url.find('/'));
+    String find_host_address(const String &url) {
+        String l_host_address = url.substring(0, url.indexOf('/'));
 
         return l_host_address;
     }
 
     String find_uri(const String &url) {
-        std::string l_uri;
-        if (url.find('/') != string::npos)
-            l_uri = url.substr(url.find('/'), url.length() - 1);
+        String l_uri;
+        if (url.indexOf('/') != url.length())
+            l_uri = url.substring(url.indexOf('/'), url.length() - 1);
 
         return l_uri;
     }
