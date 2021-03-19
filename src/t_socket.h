@@ -1,14 +1,18 @@
 #ifndef TINY_CLIENT_T_SOCKET_H
 #define TINY_CLIENT_T_SOCKET_H
-#include <string>
-#include <cstdio>
+
+#if defined(__linux)
 #include <sys/socket.h>
 #include <arpa/inet.h>
+#include <netdb.h>
+#endif
+
+#include <string>
+#include <cstdio>
 #include <unistd.h>
 #include <cstring>
 #include <iostream>
 #include <vector>
-#include <netdb.h>
 #include <sstream>
 
 
@@ -16,6 +20,8 @@ namespace tinyclient{
     class t_socket {
     public:
         virtual std::string send(std::string url){
+
+            #if defined(__linux)
             int sock;
             struct sockaddr_in client;
 
@@ -61,9 +67,10 @@ namespace tinyclient{
                 std::cout << cur;
             }
             std::cout << std::endl;
+            #endif
 
             return "hej";
-        };
+        }
         virtual void recv(){};
         virtual std::string response(){return "base response";};
 
