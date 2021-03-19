@@ -1,17 +1,10 @@
 #include <iostream>
 
-#include <sys/socket.h>
-#include "http_request.h"
+#include <macro/macro_defs.h>
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    tinyclient::t_socket socket;
-    http_request client(&socket);
-
-    std::string response = socket.send("bla");
-
-    std::cout << "json response: " << response;
+    detect_OS();
 
     return 0;
 }
