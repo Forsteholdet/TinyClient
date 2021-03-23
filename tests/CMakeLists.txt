@@ -14,9 +14,17 @@ add_executable(${TEST_NAME} old/test_main.cpp ${TEST_FILES})
 target_link_libraries(${TEST_NAME} PRIVATE catch ${LIB_NAME})
 
 ### UNITY
-add_executable(test_tinyclient test_http_request.cpp)
+## request
+add_executable(test_request test_http_request.cpp)
+target_link_libraries(test_request ${LIB_NAME})
+target_link_libraries(test_request unity)
 
-target_link_libraries(test_tinyclient ${LIB_NAME})
-target_link_libraries(test_tinyclient unity)
+add_test(request test_request)
 
-add_test(test_meh test_tinyclient)
+## get
+add_executable(test_get requests/test_get_request.cpp)
+target_link_libraries(test_get ${LIB_NAME})
+target_link_libraries(test_get unity)
+
+add_test(get test_get)
+
