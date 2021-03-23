@@ -8,6 +8,8 @@ tinyclient::http_request client(nullptr);
 
 void setUp(){
     sock = new fake_socket;
+    client = tinyclient::http_request(sock);
+
 }
 void tearDown(){
     delete sock;
@@ -23,8 +25,6 @@ void test_fun(void) {
 }
 
 void test_request_string_have_method(void) {
-    client = tinyclient::http_request(sock);
-
     client.get("tinyclient.com");
     std::string content = sock->content;
 
