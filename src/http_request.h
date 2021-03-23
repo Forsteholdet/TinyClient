@@ -1,7 +1,6 @@
 #ifndef TINY_CLIENT_HTTP_CLIENT_H
 #define TINY_CLIENT_HTTP_CLIENT_H
 
-#include <string>
 #include "fake_socket.h"
 #include "bourne/json.hpp"
 #include "constants.h"
