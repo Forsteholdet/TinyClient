@@ -42,8 +42,15 @@ void test_string_empty_method_not_empty(void) {
 void test_string_substr_method(void) {
     TCstring string = "hello world";
     TCstring hello = string.substr(0,5);
+    TCstring test = "hello";
 
-    TEST_ASSERT_EQUAL_STRING(hello.str.c_str(), "hello");
+    TEST_ASSERT_TRUE(hello == test);
+}
+
+void test_string_toCharArray_method(void) {
+    TCstring string = "hello";
+
+    TEST_ASSERT_EQUAL_STRING(string.toCharArray(), "hello");
 }
 
 int main(void) {
@@ -54,5 +61,6 @@ int main(void) {
     RUN_TEST(test_string_empty_method_empty);
     RUN_TEST(test_string_empty_method_not_empty);
     RUN_TEST(test_string_substr_method);
+    RUN_TEST(test_string_toCharArray_method);
     return UNITY_END();
 }
