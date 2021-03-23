@@ -14,10 +14,37 @@ void tearDown(){
     delete sock;
 }
 
+void test_receives_input(){
+    response rsp = client.post("tinyclient.com");
+
+    const char* content = sock->content.c_str();
+    TEST_ASSERT_EQUAL_STRING_LEN("POST", content, 4);
+
+}
+
+void test_accept_body_with_post_request(){
+
+    bourne::json body = {"Id","1"};
+
+    response rsp = client.post("tinyclient.com", body);
+
+    TEST_ASSERT(body == client.body());
+}
+
+void test_socket_receives_body_in_the_end_of_request(){
+    bourne::json body = {"Id","1"};
+    response rsp = client.post("tinyclient.com", body);
+
+    auto content = sock->content;
+
+    TEST_ASSERT(content.ends_with(body.dump()));
+}
 
 
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_check_type);
+    RUN_TEST(test_receives_input);
+    RUN_TEST(test_accept_body_with_post_request);
+    RUN_TEST(test_socket_receives_body_in_the_end_of_request);
     return UNITY_END();
 }
