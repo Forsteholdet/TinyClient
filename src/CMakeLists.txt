@@ -9,9 +9,7 @@ add_library(${LIB_NAME} STATIC ${SOURCES})
 target_include_directories(${LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 set_target_properties(${LIB_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 
-# The main program
-add_executable(${PROJECT_NAME} main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE ${LIB_NAME})
+
 
 # Specify all Libraries to use
 ## json bourne

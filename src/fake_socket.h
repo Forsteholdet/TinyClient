@@ -1,7 +1,7 @@
 #ifndef TINY_CLIENT_FAKE_SOCKET_H
 #define TINY_CLIENT_FAKE_SOCKET_H
-
 #include <string>
+
 #include "t_socket.h"
 using namespace tinyclient;
 
