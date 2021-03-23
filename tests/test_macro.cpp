@@ -6,17 +6,45 @@
 
 using namespace Catch;
 
-TEST_CASE("Macro type conversion") {
+TEST_CASE("Test TCstring") {
 
-    SECTION("Check type TCstring"){
-        TCstring stringOne = "hello";
-        TCstring stringTwo = "hello";
+    SECTION("length"){
+        TCstring string = "ok";
 
-        REQUIRE_THAT(stringOne, Equals(stringTwo));
-
-
+        REQUIRE(string.length() == 2);
     }
 
+    SECTION("equals"){
+        TCstring string = "hello";
+        TCstring result = "hello";
 
+        REQUIRE(string == result);
+    }
+
+    SECTION("not equals"){
+        TCstring string = "hello";
+        TCstring cmp = "world";
+
+        REQUIRE((string == cmp) == false);
+    }
+
+    SECTION("empty"){
+        TCstring string = "";
+
+        REQUIRE(string.empty() == true);
+    }
+
+    SECTION("not empty"){
+        TCstring string = "hello";
+
+        REQUIRE(string.empty() == false);
+    }
+
+    SECTION("substring"){
+        TCstring string = "hello world";
+        TCstring hello = string.substr(0,5);
+
+        REQUIRE_THAT(hello.str.c_str(), Equals("hello"));
+    }
 
 }
