@@ -14,7 +14,7 @@
 class TCstringLinux{
 public:
 
-    std::string str;
+
 
     TCstringLinux(const char* string) {
 
@@ -34,9 +34,16 @@ public:
         return str.empty();
     }
 
+    const char* toCharArray() {
+        return str.c_str();
+    }
+
     friend bool operator== (const TCstringLinux &lhs,const TCstringLinux &rhs){
         return lhs.str == rhs.str;
     }
+
+private:
+    std::string str;
 
 };
 
