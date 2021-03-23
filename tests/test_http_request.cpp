@@ -28,9 +28,9 @@ void test_request_string_have_method(void) {
     client.get("tinyclient.com");
     std::string content = sock->content;
 
-    const char *gay = content.c_str();
+    const char *content_char = content.c_str();
 
-    TEST_ASSERT_EQUAL_STRING_LEN("GET", gay, 3);
+    TEST_ASSERT_EQUAL_STRING_LEN("GET", content_char, 3);
 }
 
 void find_address_only_have_baseurl (){
