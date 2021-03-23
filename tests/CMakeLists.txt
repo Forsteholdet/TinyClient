@@ -28,3 +28,9 @@ target_link_libraries(test_get unity)
 
 add_test(get test_get)
 
+## string implementation
+add_executable(test_string test_string_impl.cpp)
+target_link_libraries(test_string ${LIB_NAME})
+target_link_libraries(test_string unity)
+
+add_test(string test_string)
