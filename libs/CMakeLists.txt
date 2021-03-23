@@ -5,7 +5,7 @@ include(FetchContent)
 # This particular version of projD requires workarounds
 FetchContent_Declare(
         unity
-        GIT_REPOSITORY git@github.com:ThrowTheSwitch/Unity.git
+        GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
 )
 FetchContent_GetProperties(unity)
 if(NOT unity_POPULATED)
