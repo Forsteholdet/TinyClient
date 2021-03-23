@@ -18,14 +18,14 @@ set_target_properties(${LIB_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 ## json bourne
 include(FetchContent)
 
-#FetchContent_Declare(
-#        bourne
-#        GIT_REPOSITORY git@github.com:steinwurf/bourne.git
-#        GIT_TAG        9.0.0
-#)
-#FetchContent_MakeAvailable(bourne)
+FetchContent_Declare(
+        bourne
+        GIT_REPOSITORY git@github.com:steinwurf/bourne.git
+        GIT_TAG        9.0.0
+)
+FetchContent_MakeAvailable(bourne)
 
-#target_link_libraries(${LIB_NAME} bourne)
+target_link_libraries(${LIB_NAME} bourne)
 
 
 

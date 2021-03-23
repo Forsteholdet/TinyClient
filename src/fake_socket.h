@@ -1,20 +1,20 @@
 #ifndef TINY_CLIENT_FAKE_SOCKET_H
 #define TINY_CLIENT_FAKE_SOCKET_H
-#include <Arduino.h>
+#include <string>
 
 #include "t_socket.h"
 using namespace tinyclient;
 
 class fake_socket : public t_socket{
 public:
-    String send(String str) {
+    std::string send(std::string str) {
         content += str;
         return "fake";
     }
 
-    String content;
+    std::string content;
 
-    String response() {
+    std::string response() {
         return "response";
     }
 };
