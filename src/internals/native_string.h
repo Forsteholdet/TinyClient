@@ -1,7 +1,3 @@
-//
-// Created by kaare on 3/19/21.
-//
-
 #ifndef TINY_CLIENT_TCSTRING_H
 #define TINY_CLIENT_TCSTRING_H
 
