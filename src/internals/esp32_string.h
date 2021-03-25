@@ -1,7 +1,3 @@
-//
-// Created by kaare on 3/25/2021.
-//
-
 #ifndef TINY_CLIENT_ESP32STRING_H
 #define TINY_CLIENT_ESP32STRING_H
 
