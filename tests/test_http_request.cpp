@@ -15,15 +15,6 @@ void tearDown(){
     delete sock;
 }
 
-
-void test_fun(void) {
-    std::string lol = "lol";
-    const char *gay = lol.c_str();
-
-    TEST_ASSERT_EQUAL_STRING_LEN(gay, "lol", 3);
-
-}
-
 void test_request_string_have_method(void) {
     client.get("tinyclient.com");
     std::string content = sock->content;
