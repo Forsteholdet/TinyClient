@@ -3,6 +3,6 @@ project(tiny_client)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_subdirectory(thirdpatry/catch)
 add_subdirectory(src)
+add_subdirectory(libs)
 add_subdirectory(tests)

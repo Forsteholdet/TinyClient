@@ -5,6 +5,7 @@
 #include "bourne/json.hpp"
 #include "constants.h"
 #include <response/response.h>
+#include <sstream>
 
 using namespace std;
 namespace tinyclient{
