@@ -1,19 +1,20 @@
-#include <iostream>
-#include "internals/TCstring.h"
 
 #if defined (__linux)
+#include "internals/native_string.h"
     #define PLATFORM "Linux"
-    typedef TCstringLinux TCstring;
+    typedef NativeString TinyString;
 #elif defined(_WIN32)
+#include "internals/native_string.h"
     #define PLATFORM "Windows"
-    typedef TCstringLinux TCstring;
+    typedef NativeString TinyString;
 #elif defined(ESP32)
+#include "internals/esp32_string.h"
     #define PLATFORM "ESP32"
-    typedef TCstringEsp32 TCstring;
+    typedef ESP32String TinyString;
 #else
 	#define PLATFORM "Others"
 #endif
 
-void detect_OS(){
-    std::cout << "\nOS is: " << PLATFORM;
+TinyString detect_OS(){
+    return PLATFORM;
 }
