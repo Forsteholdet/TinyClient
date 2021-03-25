@@ -8,29 +8,20 @@ tinyclient::http_request client(nullptr);
 
 void setUp(){
     sock = new fake_socket;
+    client = tinyclient::http_request(sock);
+
 }
 void tearDown(){
     delete sock;
 }
 
-
-void test_fun(void) {
-    std::string lol = "lol";
-    const char *gay = lol.c_str();
-
-    TEST_ASSERT_EQUAL_STRING_LEN(gay, "lol", 3);
-
-}
-
 void test_request_string_have_method(void) {
-    client = tinyclient::http_request(sock);
-
     client.get("tinyclient.com");
     std::string content = sock->content;
 
-    const char *gay = content.c_str();
+    const char *content_char = content.c_str();
 
-    TEST_ASSERT_EQUAL_STRING_LEN("GET", gay, 3);
+    TEST_ASSERT_EQUAL_STRING_LEN("GET", content_char, 3);
 }
 
 void find_address_only_have_baseurl (){
@@ -73,7 +64,6 @@ void request_standard_accept_is_application_slash_json(){
 // not needed when using generate_test_runner.rb
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_fun);
     RUN_TEST(test_request_string_have_method);
     RUN_TEST(find_address_only_have_baseurl);
     RUN_TEST(find_host_address_with_url_and_uri);

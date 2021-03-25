@@ -1,21 +1,38 @@
 #include <string>
+#include <fake_socket.h>
+#include <http_request.h>
 #include "unity.h"
 
-void test_fun(void) {
-    std::string lol = "lol";
-    const char *gay = lol.c_str();
+fake_socket *sock;
+tinyclient::http_request client(nullptr);
 
-    TEST_ASSERT_EQUAL_STRING_LEN(gay, "lol", 3);
-
-}
 void setUp(){
+    sock = new fake_socket;
+    client = tinyclient::http_request(sock);
 }
 void tearDown(){
+    delete sock;
 }
+
+void test_receives_input(){
+    response rsp = client.get("tinyclient.com");
+
+    const char* content = sock->content.c_str();
+    TEST_ASSERT_EQUAL_STRING_LEN("GET", content, 3);
+}
+
+
+void get_returns_a_response(){
+    std::string url = "tinyclient.com";
+
+    response response = client.get(url);
+}
+
 
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_fun);
+    RUN_TEST(test_receives_input);
+    RUN_TEST(get_returns_a_response);
 
     return UNITY_END();
 }

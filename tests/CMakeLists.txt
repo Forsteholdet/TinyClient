@@ -28,6 +28,21 @@ target_link_libraries(test_get unity)
 
 add_test(get test_get)
 
+
+## post
+add_executable(test_post requests/test_post_request.cpp)
+target_link_libraries(test_post ${LIB_NAME})
+target_link_libraries(test_post unity)
+
+add_test(post test_post)
+
+## delete
+add_executable(test_delete requests/test_delete_request.cpp)
+target_link_libraries(test_delete ${LIB_NAME})
+target_link_libraries(test_delete unity)
+
+add_test(delete test_delete)
+
 ## string implementation
 add_executable(test_string test_string_impl.cpp)
 target_link_libraries(test_string ${LIB_NAME})
