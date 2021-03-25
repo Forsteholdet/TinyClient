@@ -10,8 +10,6 @@
 class NativeString{
 public:
 
-
-
     NativeString(const char* string) {
 
         _str = std::string(string);
@@ -34,8 +32,21 @@ public:
         return _str.c_str();
     }
 
+    int find(NativeString str){
+        auto ret = _str.find(str.toCharArray());
+        if(ret == std::string::npos)
+            return -1;
+        else
+            return ret;
+    }
+
     friend bool operator== (const NativeString &lhs, const NativeString &rhs){
         return lhs._str == rhs._str;
+    }
+
+    NativeString& operator+=(const NativeString& rhs){
+        this->_str += rhs._str;
+        return *this;
     }
 
 private:
