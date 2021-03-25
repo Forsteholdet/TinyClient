@@ -1,6 +1,7 @@
 ## Catch testing framework
 add_subdirectory(catch)
 
+## Download Unity.h framework
 include(FetchContent)
 # This particular version of projD requires workarounds
 FetchContent_Declare(
