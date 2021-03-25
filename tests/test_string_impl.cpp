@@ -63,6 +63,11 @@ void test_string_find_method_returns_minusOne_if_not_found(void){
     TEST_ASSERT_EQUAL_INT(string.find("w"), -1);
 }
 
+void test_string_find_method_does_not_handle_upper_lower_case(void){
+    TinyString string = "Hello World";
+    TEST_ASSERT_EQUAL_INT(string.find("world"), -1);
+}
+
 void test_string_addition_assignment_operator(void){
     TinyString hello = "hello";
     hello += " ";
@@ -71,6 +76,8 @@ void test_string_addition_assignment_operator(void){
     TEST_ASSERT_TRUE(hello == "hello world");
 
 }
+
+
 
 int main(void) {
     UNITY_BEGIN();
@@ -84,5 +91,6 @@ int main(void) {
     RUN_TEST(test_string_find_method_returns_first_index_of_query);
     RUN_TEST(test_string_find_method_returns_minusOne_if_not_found);
     RUN_TEST(test_string_addition_assignment_operator);
+    RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
     return UNITY_END();
 }
