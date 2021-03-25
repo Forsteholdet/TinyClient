@@ -64,7 +64,6 @@ void request_standard_accept_is_application_slash_json(){
 // not needed when using generate_test_runner.rb
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_fun);
     RUN_TEST(test_request_string_have_method);
     RUN_TEST(find_address_only_have_baseurl);
     RUN_TEST(find_host_address_with_url_and_uri);
