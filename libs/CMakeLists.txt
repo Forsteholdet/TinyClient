@@ -1,8 +1,8 @@
 ## Catch testing framework
 add_subdirectory(catch)
 
+## Download Unity.h framework
 include(FetchContent)
-# This particular version of projD requires workarounds
 FetchContent_Declare(
         unity
         GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
