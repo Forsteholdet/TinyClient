@@ -1,5 +1,5 @@
 # Variables
-set(SOURCES constants.h http_request.cpp http_request.h fake_socket.cpp fake_socket.h t_socket.cpp t_socket.h response/response.cpp response/response.h macro/macro_defs.h)
+set(SOURCES constants.h http_request.cpp http_request.h fake_socket.cpp fake_socket.h t_socket.cpp t_socket.h response/response.cpp response/response.h macro/macro_defs.h internals/native_string.h internals/esp32_string.h)
 set(LIB_NAME ${PROJECT_NAME}_lib)
 
 
@@ -20,7 +20,7 @@ include(FetchContent)
 
 FetchContent_Declare(
         bourne
-        GIT_REPOSITORY git@github.com:steinwurf/bourne.git
+        GIT_REPOSITORY https://github.com/steinwurf/bourne.git
         GIT_TAG        9.0.0
 )
 FetchContent_MakeAvailable(bourne)
