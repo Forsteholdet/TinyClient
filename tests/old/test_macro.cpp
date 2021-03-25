@@ -9,42 +9,42 @@ using namespace Catch;
 TEST_CASE("Test TCstring") {
 
     SECTION("length"){
-        TCstring string = "ok";
+        TinyString string = "ok";
 
         REQUIRE(string.length() == 2);
     }
 
     SECTION("equals"){
-        TCstring string = "hello";
-        TCstring result = "hello";
+        TinyString string = "hello";
+        TinyString result = "hello";
 
         REQUIRE(string == result);
     }
 
     SECTION("not equals"){
-        TCstring string = "hello";
-        TCstring cmp = "world";
+        TinyString string = "hello";
+        TinyString cmp = "world";
 
         REQUIRE((string == cmp) == false);
     }
 
     SECTION("empty"){
-        TCstring string = "";
+        TinyString string = "";
 
         REQUIRE(string.empty() == true);
     }
 
     SECTION("not empty"){
-        TCstring string = "hello";
+        TinyString string = "hello";
 
         REQUIRE(string.empty() == false);
     }
 
     SECTION("substring"){
-        TCstring string = "hello world";
-        TCstring hello = string.substr(0,5);
+        TinyString string = "hello world";
+        TinyString hello = string.substr(0, 5);
 
-        REQUIRE_THAT(hello.str.c_str(), Equals("hello"));
+        REQUIRE_THAT(hello.toCharArray(), Equals("hello"));
     }
 
 }
