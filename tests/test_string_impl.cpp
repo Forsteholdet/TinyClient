@@ -8,47 +8,47 @@ void tearDown(){
 }
 
 void test_string_length_method(void) {
-    TCstring str = "test";
+    TinyString str = "test";
 
     TEST_ASSERT_EQUAL_INT(str.length(), 4);
 }
 
 void test_string_equals_implementation_equals(void) {
-    TCstring string = "hello";
-    TCstring result = "hello";
+    TinyString string = "hello";
+    TinyString result = "hello";
 
     TEST_ASSERT_TRUE(string == result);
 }
 
 void test_string_equals_implementation_not_equals(void) {
-    TCstring string = "hello";
-    TCstring result = "world";
+    TinyString string = "hello";
+    TinyString result = "world";
 
     TEST_ASSERT_FALSE(string == result);
 }
 
 void test_string_empty_method_empty(void) {
-    TCstring string = "";
+    TinyString string = "";
 
     TEST_ASSERT_TRUE(string.empty());
 }
 
 void test_string_empty_method_not_empty(void) {
-    TCstring string = "hello world";
+    TinyString string = "hello world";
 
     TEST_ASSERT_FALSE(string.empty());
 }
 
 void test_string_substr_method(void) {
-    TCstring string = "hello world";
-    TCstring hello = string.substr(0,5);
-    TCstring test = "hello";
+    TinyString string = "hello world";
+    TinyString hello = string.substr(0, 5);
+    TinyString test = "hello";
 
     TEST_ASSERT_TRUE(hello == test);
 }
 
 void test_string_toCharArray_method(void) {
-    TCstring string = "hello";
+    TinyString string = "hello";
 
     TEST_ASSERT_EQUAL_STRING(string.toCharArray(), "hello");
 }
