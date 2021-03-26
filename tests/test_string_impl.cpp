@@ -77,7 +77,16 @@ void test_string_addition_assignment_operator(void){
 
 }
 
+void test_string_addition_operator(){
+    TinyString hello = "hello";
+    TinyString res = hello + " " + "world";
+    TEST_ASSERT_TRUE(res == "hello world");
+}
 
+void test_string_ends_with_method(){
+    TinyString hello = "hello world";
+    TEST_ASSERT_TRUE(hello.ends_with("world"));
+}
 
 int main(void) {
     UNITY_BEGIN();
@@ -92,5 +101,7 @@ int main(void) {
     RUN_TEST(test_string_find_method_returns_minusOne_if_not_found);
     RUN_TEST(test_string_addition_assignment_operator);
     RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
+    RUN_TEST(test_string_addition_operator);
+    RUN_TEST(test_string_ends_with_method);
     return UNITY_END();
 }
