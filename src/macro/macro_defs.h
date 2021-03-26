@@ -15,6 +15,6 @@
 	#define PLATFORM "Others"
 #endif
 
-TinyString detect_OS(){
-    return PLATFORM;
-}
+//TinyString detect_OS(){
+//    return PLATFORM;
+//}
