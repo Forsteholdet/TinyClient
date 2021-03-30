@@ -78,7 +78,7 @@ public:
         return lhs._str + rhs._str;
     }
 
-    NativeString& operator+=(const NativeString& rhs){
+    NativeString& operator+= (const NativeString& rhs){
         this->_str += rhs._str;
         return *this;
     }
