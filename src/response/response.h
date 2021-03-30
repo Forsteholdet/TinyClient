@@ -6,13 +6,14 @@
 
 #ifndef TINY_CLIENT_RESPONSE_H
 #define TINY_CLIENT_RESPONSE_H
+#include "macro/macro_defs.h"
 
 namespace tinyclient{
 
 
 class response {
 public:
-    response(int code, const std::string& body){
+    response(int code, const TinyString& body){
         this->code = code;
         this->body = bourne::json { "key1", "Value"};
     }
@@ -20,7 +21,7 @@ public:
     bourne::json body;
 
     int code;
-    std::string message;
+    TinyString message = "";
 
 
 };

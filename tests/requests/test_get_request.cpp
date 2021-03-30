@@ -17,13 +17,13 @@ void tearDown(){
 void test_receives_input(){
     response rsp = client.get("tinyclient.com");
 
-    const char* content = sock->content.c_str();
+    const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("GET", content, 3);
 }
 
 
 void get_returns_a_response(){
-    std::string url = "tinyclient.com";
+    TinyString url = "tinyclient.com";
 
     response response = client.get(url);
 }

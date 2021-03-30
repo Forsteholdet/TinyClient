@@ -2,6 +2,7 @@
 #include "t_socket.h"
 #include <fake_socket.h>
 #include "http_request.h"
+#include "macro/macro_defs.h"
 
 fake_socket *sock;
 tinyclient::http_request client(nullptr);
@@ -17,29 +18,29 @@ void tearDown(){
 
 void test_request_string_have_method(void) {
     client.get("tinyclient.com");
-    std::string content = sock->content;
+    TinyString content = sock->content;
 
-    const char *content_char = content.c_str();
+    const char *content_char = content.toCharArray();
 
     TEST_ASSERT_EQUAL_STRING_LEN("GET", content_char, 3);
 }
 
 void find_address_only_have_baseurl (){
-    std::string baseurl = "tinyclient.com";
+    TinyString baseurl = "tinyclient.com";
     client.request(baseurl);
 
     TEST_ASSERT(client.host_address == baseurl);
 }
 
 void find_host_address_with_url_and_uri(){
-    std::string baseurl = "tinyclient.com";
+    TinyString baseurl = "tinyclient.com";
 
     client.request(baseurl + "/users");
     TEST_ASSERT(client.host_address == baseurl);
 }
 
 void if_no_uri_make_it_empty(){
-    std::string baseurl = "tinyclient.com";
+    TinyString baseurl = "tinyclient.com";
 
     client.request(baseurl);
     TEST_ASSERT(client.uri.empty());

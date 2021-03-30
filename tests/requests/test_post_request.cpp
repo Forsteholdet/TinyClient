@@ -17,7 +17,7 @@ void tearDown(){
 void test_receives_input(){
     response rsp = client.post("tinyclient.com");
 
-    const char* content = sock->content.c_str();
+    const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("POST", content, 4);
 
 }
@@ -36,8 +36,9 @@ void test_socket_receives_body_in_the_end_of_request(){
     response rsp = client.post("tinyclient.com", body);
 
     auto content = sock->content;
+    TinyString res = body.dump();
 
-    TEST_ASSERT(content.ends_with(body.dump()));
+    TEST_ASSERT(content.ends_with(res));
 }
 
 
