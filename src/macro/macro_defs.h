@@ -14,7 +14,3 @@
 #else
 	#define PLATFORM "Others"
 #endif
-
-//TinyString detect_OS(){
-//    return PLATFORM;
-//}
