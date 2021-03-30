@@ -77,7 +77,7 @@ private:
         return ss;
     }
 
-    TinyString find_host_address(const NativeString &url) {
+    TinyString find_host_address(const TinyString &url) {
         TinyString l_host_address = url.substr(0, url.find("/"));
 
         return l_host_address;
