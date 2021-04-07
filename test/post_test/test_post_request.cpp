@@ -49,3 +49,17 @@ int main(void) {
     RUN_TEST(test_socket_receives_body_in_the_end_of_request);
     return UNITY_END();
 }
+
+void setup()
+{
+    UNITY_BEGIN();
+    RUN_TEST(test_receives_input);
+    RUN_TEST(test_accept_body_with_post_request);
+    RUN_TEST(test_socket_receives_body_in_the_end_of_request);
+    UNITY_END();
+}
+
+void loop()
+{
+    
+}
