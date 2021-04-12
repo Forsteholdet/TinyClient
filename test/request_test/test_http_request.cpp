@@ -62,7 +62,6 @@ void request_standard_accept_is_application_slash_json(){
     TEST_ASSERT(client.accept == constants::JSON);
 }
 
-// not needed when using generate_test_runner.rb
 int main(void) {
     UNITY_BEGIN();
     RUN_TEST(test_request_string_have_method);
