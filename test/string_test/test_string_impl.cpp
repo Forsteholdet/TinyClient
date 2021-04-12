@@ -41,10 +41,10 @@ void test_string_empty_method_not_empty(void) {
 
 void test_string_substr_method(void) {
     TinyString string = "hello world";
-    TinyString hello = string.substr(0, 5);
-    TinyString test = "hello";
+    TinyString substring = string.substr(0, 5);
+    TinyString hello = "hello";
 
-    TEST_ASSERT_TRUE(hello == test);
+    TEST_ASSERT_TRUE(substring == hello);
 }
 
 void test_string_toCharArray_method(void) {
