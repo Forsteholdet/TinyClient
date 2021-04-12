@@ -4,7 +4,6 @@
 
 #if defined(ESP32)
 #include <Arduino.h>
-#include <String.h>
 
 class ESP32String{
 public:
