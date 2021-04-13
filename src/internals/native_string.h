@@ -6,6 +6,7 @@
 #if defined(__linux) || defined(_WIN32)
 
 #include "string"
+#include "bourne/json.hpp"
 
 class NativeString{
 public:
@@ -20,6 +21,12 @@ public:
         _str = std::move(basicString);
 
     }
+
+    NativeString(bourne::json jsonObj){
+        _str = jsonObj.dump();
+    }
+
+    
 
     int length() const{
         return _str.length();
@@ -82,6 +89,7 @@ public:
         this->_str += rhs._str;
         return *this;
     }
+
 
 private:
     std::string _str;

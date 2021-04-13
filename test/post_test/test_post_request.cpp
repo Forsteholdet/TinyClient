@@ -36,7 +36,7 @@ void test_socket_receives_body_in_the_end_of_request(){
     response rsp = client.post("tinyclient.com", body);
 
     auto content = sock->content;
-    TinyString res = body.dump().c_str();
+    TinyString res = body;
 
     TEST_ASSERT(content.ends_with(res));
 }

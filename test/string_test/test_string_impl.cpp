@@ -88,6 +88,12 @@ void test_string_ends_with_method(){
     TEST_ASSERT_TRUE(hello.ends_with("world"));
 }
 
+void test_TinyString_json_constructor(){
+    bourne::json jsonObj = {"Id", "1"};
+    TinyString someString = jsonObj;
+
+    TEST_ASSERT(someString == jsonObj.dump());
+}
 
 void run_tests(){
     RUN_TEST(test_string_length_method);
@@ -103,6 +109,7 @@ void run_tests(){
     RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
     RUN_TEST(test_string_addition_operator);
     RUN_TEST(test_string_ends_with_method);
+    RUN_TEST(test_TinyString_json_constructor);
 }
 
 int main(void) {

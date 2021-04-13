@@ -4,7 +4,7 @@
 
 #if defined(ESP32)
 #include <Arduino.h>
-
+#include "bourne/json.hpp"
 class ESP32String{
 public:
 
@@ -17,6 +17,10 @@ public:
 
     ESP32String(String basicString){
         _str = basicString;
+    }
+
+    ESP32String(bourne::json jsonObj){
+        _str = jsonObj.dump();
     }
 
     int length() const{
