@@ -20,7 +20,8 @@ public:
     }
 
     ESP32String(bourne::json jsonObj){
-        _str = jsonObj.dump();
+        auto str = String(jsonObj.dump().c_str());
+        _str = str;
     }
 
     int length() const{
