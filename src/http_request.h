@@ -32,7 +32,7 @@ public:
         TinyString socket_string = get_socket_string();
 
         if (! body().is_null()){
-            socket_string += body().dump();
+            socket_string += body().dump().c_str();
         }
 
         socket->send(socket_string);

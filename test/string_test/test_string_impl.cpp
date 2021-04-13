@@ -92,7 +92,7 @@ void test_TinyString_json_constructor(){
     bourne::json jsonObj = {"Id", "1"};
     TinyString someString = jsonObj;
 
-    TEST_ASSERT(someString == jsonObj.dump());
+    TEST_ASSERT(someString == jsonObj.dump().c_str());
 }
 
 void run_tests(){
