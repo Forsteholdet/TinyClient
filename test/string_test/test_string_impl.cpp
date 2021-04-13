@@ -88,8 +88,8 @@ void test_string_ends_with_method(){
     TEST_ASSERT_TRUE(hello.ends_with("world"));
 }
 
-int main(void) {
-    UNITY_BEGIN();
+
+void run_all_test(){
     RUN_TEST(test_string_length_method);
     RUN_TEST(test_string_equals_operator_equals);
     RUN_TEST(test_string_equals_operator_not_equals);
@@ -103,25 +103,18 @@ int main(void) {
     RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
     RUN_TEST(test_string_addition_operator);
     RUN_TEST(test_string_ends_with_method);
+}
+
+int main(void) {
+    UNITY_BEGIN();
+    run_all_test();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    RUN_TEST(test_string_length_method);
-    RUN_TEST(test_string_equals_operator_equals);
-    RUN_TEST(test_string_equals_operator_not_equals);
-    RUN_TEST(test_string_empty_method_empty);
-    RUN_TEST(test_string_empty_method_not_empty);
-    RUN_TEST(test_string_substr_method);
-    RUN_TEST(test_string_toCharArray_method);
-    RUN_TEST(test_string_find_method_returns_first_index_of_query);
-    RUN_TEST(test_string_find_method_returns_minusOne_if_not_found);
-    RUN_TEST(test_string_addition_assignment_operator);
-    RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
-    RUN_TEST(test_string_addition_operator);
-    RUN_TEST(test_string_ends_with_method);
+    run_all_test();
     UNITY_END();
 }
 

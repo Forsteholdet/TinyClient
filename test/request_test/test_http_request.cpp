@@ -62,26 +62,25 @@ void request_standard_accept_is_application_slash_json(){
     TEST_ASSERT(client.accept == constants::JSON);
 }
 
-int main(void) {
-    UNITY_BEGIN();
+void run_all_test(){
     RUN_TEST(test_request_string_have_method);
     RUN_TEST(find_address_only_have_baseurl);
     RUN_TEST(find_host_address_with_url_and_uri);
     RUN_TEST(if_no_uri_make_it_empty);
     RUN_TEST(make_a_request_with_uri_and_host);
     RUN_TEST(request_standard_accept_is_application_slash_json);
+}
+
+int main(void) {
+    UNITY_BEGIN();
+    run_all_test();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    RUN_TEST(test_request_string_have_method);
-    RUN_TEST(find_address_only_have_baseurl);
-    RUN_TEST(find_host_address_with_url_and_uri);
-    RUN_TEST(if_no_uri_make_it_empty);
-    RUN_TEST(make_a_request_with_uri_and_host);
-    RUN_TEST(request_standard_accept_is_application_slash_json);
+    run_all_test();
     UNITY_END();
 }
 
