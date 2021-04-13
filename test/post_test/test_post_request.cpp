@@ -41,7 +41,7 @@ void test_socket_receives_body_in_the_end_of_request(){
     TEST_ASSERT(content.ends_with(res));
 }
 
-void run_all_test(){
+void run_tests(){
     
     RUN_TEST(test_receives_input);
     RUN_TEST(test_accept_body_with_post_request);
@@ -51,14 +51,14 @@ void run_all_test(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     UNITY_END();
 }
 

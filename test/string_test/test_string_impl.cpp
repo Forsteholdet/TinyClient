@@ -89,7 +89,7 @@ void test_string_ends_with_method(){
 }
 
 
-void run_all_test(){
+void run_tests(){
     RUN_TEST(test_string_length_method);
     RUN_TEST(test_string_equals_operator_equals);
     RUN_TEST(test_string_equals_operator_not_equals);
@@ -107,14 +107,14 @@ void run_all_test(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     UNITY_END();
 }
 

@@ -62,7 +62,7 @@ void request_standard_accept_is_application_slash_json(){
     TEST_ASSERT(client.accept == constants::JSON);
 }
 
-void run_all_test(){
+void run_tests(){
     RUN_TEST(test_request_string_have_method);
     RUN_TEST(find_address_only_have_baseurl);
     RUN_TEST(find_host_address_with_url_and_uri);
@@ -73,14 +73,14 @@ void run_all_test(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     UNITY_END();
 }
 

@@ -30,21 +30,21 @@ void test_receives_input(){
 }
 
 
-void run_all_test(){
+void run_tests(){
     RUN_TEST(test_check_type);
     RUN_TEST(test_receives_input);
 }
 
 int main(void) {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_all_test();
+    run_tests();
     UNITY_END();
 }
 
