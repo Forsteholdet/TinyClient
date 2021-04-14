@@ -28,11 +28,24 @@ void get_returns_a_response(){
     response response = client.get(url);
 }
 
+void run_tests(){
+    RUN_TEST(test_receives_input);
+    RUN_TEST(get_returns_a_response);
+}
+
 
 int main(void) {
     UNITY_BEGIN();
-    RUN_TEST(test_receives_input);
-    RUN_TEST(get_returns_a_response);
-
+    run_tests();
     return UNITY_END();
+}
+
+void setup() {
+    UNITY_BEGIN();
+    run_tests();
+    UNITY_END();
+}
+
+void loop() {
+    
 }

@@ -41,10 +41,10 @@ void test_string_empty_method_not_empty(void) {
 
 void test_string_substr_method(void) {
     TinyString string = "hello world";
-    TinyString hello = string.substr(0, 5);
-    TinyString test = "hello";
+    TinyString substring = string.substr(0, 5);
+    TinyString hello = "hello";
 
-    TEST_ASSERT_TRUE(hello == test);
+    TEST_ASSERT_TRUE(substring == hello);
 }
 
 void test_string_toCharArray_method(void) {
@@ -88,8 +88,14 @@ void test_string_ends_with_method(){
     TEST_ASSERT_TRUE(hello.ends_with("world"));
 }
 
-int main(void) {
-    UNITY_BEGIN();
+void test_TinyString_json_constructor(){
+    bourne::json jsonObj = {"Id", "1"};
+    TinyString someString = jsonObj;
+
+    TEST_ASSERT(someString == jsonObj.dump().c_str());
+}
+
+void run_tests(){
     RUN_TEST(test_string_length_method);
     RUN_TEST(test_string_equals_operator_equals);
     RUN_TEST(test_string_equals_operator_not_equals);
@@ -103,5 +109,23 @@ int main(void) {
     RUN_TEST(test_string_find_method_does_not_handle_upper_lower_case);
     RUN_TEST(test_string_addition_operator);
     RUN_TEST(test_string_ends_with_method);
+    RUN_TEST(test_TinyString_json_constructor);
+}
+
+int main(void) {
+    UNITY_BEGIN();
+    run_tests();
     return UNITY_END();
+}
+
+void setup()
+{
+    UNITY_BEGIN();
+    run_tests();
+    UNITY_END();
+}
+
+void loop()
+{
+    
 }
