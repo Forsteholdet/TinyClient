@@ -95,7 +95,7 @@ void test_TinyString_json_constructor(){
     TEST_ASSERT(someString == jsonObj.dump().c_str());
 }
 
-void run_tests(){
+void runTests(){
     RUN_TEST(test_string_length_method);
     RUN_TEST(test_string_equals_operator_equals);
     RUN_TEST(test_string_equals_operator_not_equals);
@@ -114,14 +114,14 @@ void run_tests(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     UNITY_END();
 }
 

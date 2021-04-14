@@ -14,7 +14,11 @@ namespace tinyclient{
         virtual TinyString response(){return "base response";};
 
         TinyString content = "";
+
+        virtual ~t_socket() { };
+
     };
+
 
 }
 

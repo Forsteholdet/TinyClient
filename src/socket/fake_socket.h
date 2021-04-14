@@ -15,6 +15,8 @@ public:
     TinyString response() {
         return "response";
     }
+
+    ~fake_socket() { }
 };
 
 

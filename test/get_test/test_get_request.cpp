@@ -1,5 +1,5 @@
 #include <string>
-#include <fake_socket.h>
+#include <socket/fake_socket.h>
 #include <http_request.h>
 #include "unity.h"
 
@@ -28,7 +28,7 @@ void get_returns_a_response(){
     response response = client.get(url);
 }
 
-void run_tests(){
+void runTests(){
     RUN_TEST(test_receives_input);
     RUN_TEST(get_returns_a_response);
 }
@@ -36,13 +36,13 @@ void run_tests(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     return UNITY_END();
 }
 
 void setup() {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     UNITY_END();
 }
 

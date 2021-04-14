@@ -1,5 +1,5 @@
 #include "unity.h"
-#include <fake_socket.h>
+#include <socket/fake_socket.h>
 #include <http_request.h>
 
 fake_socket *sock;
@@ -41,7 +41,7 @@ void test_socket_receives_body_in_the_end_of_request(){
     TEST_ASSERT(content.ends_with(res));
 }
 
-void run_tests(){
+void runTests(){
     
     RUN_TEST(test_receives_input);
     RUN_TEST(test_accept_body_with_post_request);
@@ -51,14 +51,14 @@ void run_tests(){
 
 int main(void) {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     return UNITY_END();
 }
 
 void setup()
 {
     UNITY_BEGIN();
-    run_tests();
+    runTests();
     UNITY_END();
 }
 
