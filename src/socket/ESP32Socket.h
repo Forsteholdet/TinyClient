@@ -5,6 +5,10 @@
 using namespace tinyclient;
 class ESP32Socket : public t_socket {
         public:
+            ESP32Socket(int first, int second, int third, int fourth, int port) {
+
+            }
+            
             bool connect() { return true; };
         private:
     };
