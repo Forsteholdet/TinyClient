@@ -8,7 +8,7 @@
 class ESP32String{
 public:
 
-
+    ESP32String(){}
 
     ESP32String(const char* str) {
 

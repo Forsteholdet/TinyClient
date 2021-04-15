@@ -11,6 +11,7 @@
 class NativeString{
 public:
 
+    NativeString(){}
 
     NativeString(const char* str) {
 
