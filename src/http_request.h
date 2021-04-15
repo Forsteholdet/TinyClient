@@ -5,6 +5,7 @@
 #include "bourne/json.hpp"
 #include "constants.h"
 #include <response/response.h>
+#include "package/package.h"
 
 using namespace std;
 namespace tinyclient{
@@ -25,7 +26,7 @@ public:
     TinyString type () const { return _type; };
     bourne::json body () const { return _body; };
 
-    response request(const TinyString& url){
+    Response request(const TinyString& url){
         host_address = find_host_address(url);
         uri = find_uri(url);
 
@@ -36,28 +37,31 @@ public:
         }
 
         socket->send(socket_string);
+        
         TinyString response_str = socket->response();
 
-        return response(ok, response_str);
+        
+
+        return Response(ok, response_str);
     }
 
-    response get (const TinyString& url){
+    Response get (const TinyString& url){
         _type = "GET";
         return request(url);
     }
 
-    response post (const TinyString& url){
+    Response post (const TinyString& url){
         _type = "POST";
         return request(url);
     }
 
-    response post (const TinyString& url, bourne::json body){
+    Response post (const TinyString& url, bourne::json body){
         _type = "POST";
         _body = body;
         return request(url);
     }
 
-    response del (const TinyString& url){
+    Response del (const TinyString& url){
         _type = "DELETE";
         return request(url);
     }

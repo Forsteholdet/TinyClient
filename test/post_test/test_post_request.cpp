@@ -15,7 +15,7 @@ void tearDown(){
 }
 
 void test_receives_input(){
-    response rsp = client.post("tinyclient.com");
+    Response rsp = client.post("tinyclient.com");
 
     const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("POST", content, 4);
@@ -26,14 +26,14 @@ void test_accept_body_with_post_request(){
 
     bourne::json body = {"Id","1"};
 
-    response rsp = client.post("tinyclient.com", body);
+    Response rsp = client.post("tinyclient.com", body);
 
     TEST_ASSERT(body == client.body());
 }
 
 void test_socket_receives_body_in_the_end_of_request(){
     bourne::json body = {"Id","1"};
-    response rsp = client.post("tinyclient.com", body);
+    Response rsp = client.post("tinyclient.com", body);
 
     auto content = sock->content;
     TinyString res = body;

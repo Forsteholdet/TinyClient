@@ -15,7 +15,7 @@ void tearDown(){
 }
 
 void test_receives_input(){
-    response rsp = client.get("tinyclient.com");
+    Response rsp = client.get("tinyclient.com");
 
     const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("GET", content, 3);
@@ -25,7 +25,7 @@ void test_receives_input(){
 void get_returns_a_response(){
     TinyString url = "tinyclient.com";
 
-    response response = client.get(url);
+    Response response = client.get(url);
 }
 
 void runTests(){

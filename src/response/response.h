@@ -2,18 +2,19 @@
 // Created by anders on 3/2/21.
 //
 
-#include <bourne/json.hpp>
+
 
 #ifndef TINY_CLIENT_RESPONSE_H
 #define TINY_CLIENT_RESPONSE_H
+#include <bourne/json.hpp>
 #include "macro/macro_defs.h"
 
 namespace tinyclient{
 
 
-class response {
+class Response {
 public:
-    response(int code, const TinyString& body){
+    Response(int code, const TinyString& body){
         this->code = code;
         this->body = bourne::json { "key1", "Value"};
     }
