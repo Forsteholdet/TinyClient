@@ -6,7 +6,7 @@
 #include "response/response.h"
 
 
-TinyString header = "Request URL: https://fake.com/ Request Method: GET Status Code 200";
+TinyString header = "HTTP/1.1 200 OK Server: Apache";
 TinyString body = "{'test', 'body'}";
     
 
@@ -20,13 +20,13 @@ void tearDown(){
 
 }
 
-void test_decoder_finds_satusCode(){
+void test_decoder_finds_statusCode(){
     
     Response rsp = decoder.decode(package);
 
     int statusCode = decoder.getStatusCode();
 
-    TEST_ASSERT(200 == statusCode);
+    TEST_ASSERT_EQUAL_INT(200, statusCode);
 }
 
 void test_decoder_finds_body_as_tinystring(){
@@ -49,7 +49,7 @@ void test_decoder_decodes_stringbody_to_jsonbody(){
 }
 
 void runTests(){
-    RUN_TEST(test_decoder_finds_satusCode);
+    RUN_TEST(test_decoder_finds_statusCode);
     RUN_TEST(test_decoder_finds_body_as_tinystring);
     RUN_TEST(test_decoder_decodes_stringbody_to_jsonbody);
 }
