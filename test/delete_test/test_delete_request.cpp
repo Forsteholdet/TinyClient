@@ -15,7 +15,7 @@ void tearDown(){
 }
 
 void test_check_type(){
-    response rsp = client.del("tinyclient.com");
+    Response rsp = client.del("tinyclient.com");
 
     const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("DELETE", content, 6);
@@ -23,7 +23,7 @@ void test_check_type(){
 }
 
 void test_receives_input(){
-    response rsp = client.get("tinyclient.com");
+    Response rsp = client.get("tinyclient.com");
 
     const char* content = sock->content.toCharArray();
     TEST_ASSERT_EQUAL_STRING_LEN("GET", content, 3);
