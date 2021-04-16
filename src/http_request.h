@@ -86,7 +86,7 @@ private:
     TinyString find_uri(const TinyString &url) {
         TinyString l_uri = "";
         if (url.find("/") != -1)
-            l_uri = url.substr(url.find("/"), url.length() - 1);
+            l_uri = url.substr(url.find("/"), url.length());
 
         return l_uri;
     }

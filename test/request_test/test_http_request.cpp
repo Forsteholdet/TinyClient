@@ -49,9 +49,7 @@ void if_no_uri_make_it_empty(){
 void make_a_request_with_uri_and_host(){
     client.get("tinyclient.com/users?page=lol");
 
-    TinyString path_and_host =" /users?page=lol HTTP/1.1\r\nHost: tinyclient.com\r\n";
-    auto full_request = client.type() + path_and_host;
-
+    TinyString full_request ="GET /users?page=lol HTTP/1.1\r\nHost: tinyclient.com\r\n";
     // Expected 'GET /users?page=lol HTTP/1.1\r\nHost: tinyclient.com\r\n'
     // Was      'GET /users?page=lo HTTP/1.1\r\nHost: tinyclient.com\r\n' 
     TEST_ASSERT_EQUAL_STRING(full_request.toCharArray(), sock->content.toCharArray());
