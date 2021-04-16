@@ -78,6 +78,11 @@ public:
         return *this;
     }
 
+    ESP32String& operator +=(char c){
+        this->_str += c;
+        return *this;
+    }
+
 private:
     String _str;
 };

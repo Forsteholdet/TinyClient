@@ -5,9 +5,8 @@ using namespace tinyclient;
 
 class fake_socket : public t_socket{
 public:
-    TinyString send(TinyString str) {
+    void send(TinyString str) {
         content += str;
-        return "fake";
     }
 
     TinyString content = "";

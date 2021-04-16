@@ -6,11 +6,14 @@ void tearDown(){ }
 
 void test_sends_to_host(){
     ESP32Socket socket(1,1,1,1,5000);
+
+    IPAddress ip(1,1,1,1);
     
-    TEST_ASSERT(socket.connect());
+    TEST_ASSERT(socket.server_ip == ip);
 }
 
 void runTests() {
+    RUN_TEST(test_sends_to_host);
 
 }
 
