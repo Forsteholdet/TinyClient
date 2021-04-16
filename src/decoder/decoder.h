@@ -62,7 +62,14 @@ private:
 
     TinyString findBody(){return "default";}
 
-    bourne::json decodeBodyToJson(TinyString stringBody){ return "{'default', 'body'}";}
+    bourne::json decodeBodyToJson(TinyString stringBody)
+    {   
+        bourne::json object = bourne::json::object();
+        
+        object = bourne::json::parse(stringBody.toCharArray());
+
+        return object;
+    }
 
 };
 
