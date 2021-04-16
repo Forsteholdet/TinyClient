@@ -7,6 +7,8 @@
 class Package{
 
     public:
+
+    Package(){}
     
     
     Package(TinyString _header, TinyString _body){
