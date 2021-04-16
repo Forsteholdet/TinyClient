@@ -9,8 +9,8 @@
 #include <bourne/json.hpp>
 #include "macro/macro_defs.h"
 
-namespace tinyclient{
 
+const static int ok = 200;
 
 class Response {
 public:
@@ -24,12 +24,8 @@ public:
     int code;
     TinyString message = "";
 
-
 };
 
-const static int ok = 200;
-
-}
 
 
 #endif //TINY_CLIENT_RESPONSE_H
