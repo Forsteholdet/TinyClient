@@ -3,14 +3,15 @@
 #if defined(ESP32)
 #include <WiFiClient.h>
 #include <WiFiClientSecure.h>
+#include "socket/ESP32Socket.h"
 
 const char* ssid = "NOKIA-CE21"; //Enter SSID
 const char* password = "R4f6U4pEeS"; //Enter Password
 
 
 void setup(){
-    const IPAddress ipserver(192,168,87,133);
-    const int port = 5000;
+    int port = 5000;
+    const IPAddress ipserver(192,168,87,119);
     WiFiClient client;
 
     //Initialize serial and wait for port to open:
@@ -43,37 +44,30 @@ void setup(){
   Serial.print("IP address set: ");
   Serial.println(WiFi.localIP());
   
-  Serial.println("\nStarting connection to server...");
-  if (!client.connect(ipserver, port))
-    Serial.println("Connection failed!");
-  else {
-    Serial.println("Connected to server!");
+  ESP32Socket socket(192,168,87,119,port);
+  Serial.println("socket: " + socket.server_ip.toString());
+  Serial.println("port: " + socket.port);
+  socket.connect();
     
-    // Make a HTTP request:
-    client.println("POST /test HTTP/1.1");
-    client.println("Host: http://" + ipserver.toString() + (String)port);
-    client.println("accept: application/json");
-    client.println();
-    
-    while (client.connected()) {
-      String line = client.readStringUntil('\n');
-      if (line == "\r") {
-        Serial.println("headers received");
-        break;
-      }
-    }
-    // if there are incoming bytes available
-    // from the server, read them and print them:
-    while (client.available()) {
-      char c = client.read();
-      Serial.write(c);
-    }
+  // Make a HTTP request:
+  socket.println("GET /test HTTP/1.1");
+  socket.println("Host: http://" + ipserver.toString() + ":" + socket.port);
 
-    client.stop();
-  }
+  socket.println("accept: application/json");
+  socket.println("");
+  
+  TinyString header = socket.recvHeader();
+  // if there are incoming bytes available
+  // from the server, read them and print them:
+  TinyString body = socket.recvBody();
 
+  Serial.print("header: ");
+  Serial.println(header.toCharArray());
+  Serial.print("body: ");
+  Serial.println(body.toCharArray());
 
-
+  socket.close();
+  client.stop();
 }
 void loop(){}
 
