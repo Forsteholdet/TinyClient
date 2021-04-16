@@ -22,7 +22,7 @@ public:
         
         this->jsonBody = decodeBodyToJson(stringBody);
         
-        return Response(statusCode, stringBody);
+        return Response(2, stringBody);
     }
 
     bourne::json getJsonBody(){
@@ -41,10 +41,24 @@ private:
     Package package;
 
     int statusCode;
+
     TinyString stringBody;
     bourne::json jsonBody;
 
-    int findStatusCode(){return 0;}
+    int findStatusCode()
+    {
+        TinyString header = package.getHeader();
+
+        int firstWhiteSpace = header.find(" ");
+        int whiteSpaceAfterStatusCode = firstWhiteSpace + 4;
+
+        TinyString statusCodeString = header.substr(firstWhiteSpace, whiteSpaceAfterStatusCode);
+
+        int statusCode = atoi(statusCodeString.toCharArray());
+        
+        return statusCode;
+    }
+
 
     TinyString findBody(){return "default";}
 
