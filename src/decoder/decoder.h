@@ -22,7 +22,7 @@ public:
         
         this->jsonBody = decodeBodyToJson(stringBody);
         
-        return Response(2, stringBody);
+        return Response(statusCode, stringBody);
     }
 
     bourne::json getJsonBody(){
