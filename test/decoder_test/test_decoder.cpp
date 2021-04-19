@@ -29,28 +29,19 @@ void test_decoder_finds_statusCode(){
     TEST_ASSERT_EQUAL_INT(200, statusCode);
 }
 
-void test_decoder_finds_body_as_tinystring(){
-    Response rsp = decoder.decode(package);
-
-    TinyString stringBody = decoder.getStringBody();
-    TinyString expected = "default";
-
-    TEST_ASSERT(expected == stringBody);
-}
-
 void test_decoder_decodes_stringbody_to_jsonbody(){
     Response rsp = decoder.decode(package);
 
     bourne::json jsonBody = decoder.getJsonBody();
 
-    bourne::json expected = "{'default', 'body'}";
-    
+    bourne::json expected = "{'test', 'body'}";
+
     TEST_ASSERT(expected == jsonBody);
 }
 
+
 void runTests(){
     RUN_TEST(test_decoder_finds_statusCode);
-    RUN_TEST(test_decoder_finds_body_as_tinystring);
     RUN_TEST(test_decoder_decodes_stringbody_to_jsonbody);
 }
 
