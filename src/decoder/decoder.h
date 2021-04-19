@@ -17,21 +17,16 @@ public:
         this->package = _package;
 
         this->statusCode = findStatusCode();
-
-        this->stringBody = findBody();
         
-        this->jsonBody = decodeBodyToJson(stringBody);
+        this->jsonBody = decodeBodyToJson();
         
-        return Response(statusCode, stringBody);
+        return Response(statusCode, "hello");
     }
 
     bourne::json getJsonBody(){
         return this->jsonBody;
     }
 
-    TinyString getStringBody(){
-        return this->stringBody;
-    }
 
     int getStatusCode(){
         return this->statusCode;
@@ -42,7 +37,6 @@ private:
 
     int statusCode;
 
-    TinyString stringBody;
     bourne::json jsonBody;
 
     int findStatusCode()
@@ -62,13 +56,16 @@ private:
 
     TinyString findBody(){return "default";}
 
-    bourne::json decodeBodyToJson(TinyString stringBody)
-    {   
-        bourne::json object = bourne::json::object();
-        
-        object = bourne::json::parse(stringBody.toCharArray());
+    bourne::json decodeBodyToJson()
+    {   TinyString stringBody = package.getBody();
+   
+        TinyString prepStringBody = "\"" + stringBody + "\"";
 
-        return object;
+        const char* bodyToParse = prepStringBody.toCharArray();
+
+        auto jsonBody = bourne::json::parse(bodyToParse);
+
+        return jsonBody;
     }
 
 };
