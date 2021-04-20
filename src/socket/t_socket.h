@@ -8,7 +8,7 @@ namespace tinyclient{
     class t_socket {
     public:
         virtual void send(TinyString url){ };
-        virtual TinyString recv(){};
+        virtual TinyString recv(){ return "STUB"; };
         virtual TinyString response(){return "base response";};
 
         TinyString content = "";

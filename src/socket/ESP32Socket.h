@@ -1,5 +1,7 @@
 #ifndef TINY_CLIENT_ESP32SOCKET_H
 #define TINY_CLIENT_ESP32SOCKET_H
+#ifdef ESP32_SOCKET
+
 #include "t_socket.h"
 #include "WiFiClient.h"
 
@@ -46,8 +48,8 @@ class ESP32Socket : public t_socket {
                     TinyString line = client.readStringUntil('\n');
                     if (line == "\r") {
                         Serial.println("headers received");
-                        return line;
                     }
+                    return line;
                 }
 
                 return "";
@@ -63,10 +65,13 @@ class ESP32Socket : public t_socket {
                 return body;
             }
 
-            void close(){
+            void stop(){
                 client.stop();
             }
+
+
         private:
         
 };
+#endif // ESP32_SOCKET
 #endif // TINY_CLIENT_ESP32SOCKET_H
